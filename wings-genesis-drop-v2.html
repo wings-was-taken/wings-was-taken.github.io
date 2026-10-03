@@ -1,0 +1,3048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <title>WINGS — THE GENESIS DROP</title>
+  <meta
+    name="description"
+    content="WINGS — THE GENESIS DROP. Premium Indian streetwear built for the relentless."
+  />
+
+  <!-- Google Fonts only external dependency -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --bg-soft: #111111;
+      --card: #151515;
+      --cream: #f5f0e8;
+      --orange: #ff6b00;
+      --grey: #808080;
+      --grey-dark: #282828;
+      --line: rgba(245, 240, 232, 0.12);
+      --max: 1440px;
+      --nav-h: 78px;
+      --radius: 2px;
+      --shadow: 0 20px 60px rgba(0,0,0,.28);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--bg);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--cream);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    img,
+    svg {
+      display: block;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      border: 0;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    ::selection {
+      background: var(--orange);
+      color: var(--bg);
+    }
+
+    /* ---------- Global utility ---------- */
+
+    .container {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .19em;
+      text-transform: uppercase;
+      color: var(--orange);
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 22px;
+      height: 1px;
+      background: var(--orange);
+    }
+
+    .section {
+      padding: 120px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-title {
+      font-family: "Archivo Black", Impact, sans-serif;
+      font-size: clamp(44px, 7vw, 92px);
+      line-height: .92;
+      letter-spacing: -.02em;
+      text-transform: uppercase;
+    }
+
+    .mono {
+      font-variant-numeric: tabular-nums;
+      font-feature-settings: "tnum";
+    }
+
+    /* ---------- Wing icon ---------- */
+
+    .wing-mark {
+      width: 29px;
+      height: 29px;
+      color: var(--cream);
+      flex: 0 0 auto;
+    }
+
+    .wing-mark.orange {
+      color: var(--orange);
+    }
+
+    /* ---------- Navbar ---------- */
+
+    .navbar {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 50;
+      height: var(--nav-h);
+      transition:
+        background .3s ease,
+        border-color .3s ease,
+        backdrop-filter .3s ease,
+        box-shadow .3s ease;
+      border-bottom: 1px solid transparent;
+      background: linear-gradient(to bottom, rgba(10,10,10,.72), transparent);
+    }
+
+    .navbar.scrolled {
+      background: rgba(10,10,10,.94);
+      backdrop-filter: blur(14px);
+      border-bottom-color: var(--line);
+      box-shadow: 0 10px 30px rgba(0,0,0,.18);
+    }
+
+    .nav-inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand-lockup {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      font-family: "Archivo Black", Impact, sans-serif;
+      font-size: 19px;
+      letter-spacing: .06em;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      color: #c7c1b7;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding: 4px 0;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: var(--orange);
+      transition: width .2s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .shop-btn {
+      background: var(--orange);
+      color: #0a0a0a;
+      padding: 13px 18px;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .shop-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 9px 24px rgba(255,107,0,.23);
+    }
+
+    .nav-toggle {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--line);
+      background: #101010;
+      color: var(--cream);
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-toggle span,
+    .nav-toggle span::before,
+    .nav-toggle span::after {
+      display: block;
+      width: 18px;
+      height: 2px;
+      background: currentColor;
+      transition: transform .2s ease;
+    }
+
+    .nav-toggle span {
+      position: relative;
+    }
+
+    .nav-toggle span::before,
+    .nav-toggle span::after {
+      content: "";
+      position: absolute;
+      left: 0;
+    }
+
+    .nav-toggle span::before { top: -6px; }
+    .nav-toggle span::after  { top: 6px; }
+
+    .mobile-menu {
+      display: none;
+    }
+
+    /* ---------- Hero ---------- */
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      isolation: isolate;
+      padding: calc(var(--nav-h) + 50px) 0 70px;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 84% 28%, rgba(255,107,0,.10), transparent 26%),
+        radial-gradient(circle at 16% 78%, rgba(255,255,255,.03), transparent 24%),
+        repeating-linear-gradient(0deg, rgba(255,255,255,.018) 0 1px, transparent 1px 7px),
+        repeating-linear-gradient(90deg, rgba(255,255,255,.013) 0 1px, transparent 1px 9px);
+      z-index: -3;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: .14;
+      z-index: 10;
+      background-image:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.7) 0 0.6px, transparent .8px),
+        radial-gradient(circle at 80% 60%, rgba(255,255,255,.45) 0 0.5px, transparent .8px),
+        radial-gradient(circle at 30% 88%, rgba(255,255,255,.55) 0 0.5px, transparent .8px);
+      background-size: 5px 5px, 7px 7px, 11px 11px;
+      mix-blend-mode: screen;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(360px, .92fr);
+      gap: 60px;
+      align-items: end;
+      width: 100%;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-copy {
+      max-width: 860px;
+    }
+
+    .hero h1 {
+      font-family: "Archivo Black", Impact, sans-serif;
+      font-size: clamp(74px, 11vw, 170px);
+      line-height: .83;
+      letter-spacing: -.03em;
+      text-transform: uppercase;
+      margin: 19px 0 25px;
+    }
+
+    .hero-sub {
+      font-size: clamp(14px, 1.5vw, 18px);
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: #ddd7cc;
+    }
+
+    .hero-right {
+      justify-self: end;
+      width: min(100%, 560px);
+    }
+
+    .hero-placeholder {
+      width: 100%;
+      aspect-ratio: 4/5;
+      min-height: 430px;
+      border: 1px solid rgba(245,240,232,.11);
+      background:
+        linear-gradient(145deg, rgba(128,128,128,.11), rgba(255,255,255,.02)),
+        #121212;
+      display: grid;
+      place-items: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-placeholder::before,
+    .hero-placeholder::after {
+      content: "";
+      position: absolute;
+      inset: 15px;
+      border: 1px solid rgba(128,128,128,.11);
+      pointer-events: none;
+    }
+
+    .placeholder-label {
+      text-align: center;
+      color: #676767;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      padding: 20px;
+    }
+
+    .placeholder-label strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #929292;
+      font-size: 13px;
+    }
+
+    .hero-bottom {
+      margin-top: 37px;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .cta {
+      padding: 15px 19px;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      transition: all .2s ease;
+      border: 1px solid var(--cream);
+    }
+
+    .cta.primary {
+      background: var(--orange);
+      border-color: var(--orange);
+      color: var(--bg);
+    }
+
+    .cta.secondary {
+      background: transparent;
+      color: var(--cream);
+    }
+
+    .cta:hover {
+      transform: translateY(-1px);
+    }
+
+    .cta.secondary:hover {
+      background: var(--cream);
+      color: var(--bg);
+    }
+
+    /* ---------- Ticker ---------- */
+
+    .ticker {
+      overflow: hidden;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: #050505;
+    }
+
+    .ticker-track {
+      display: flex;
+      width: max-content;
+      white-space: nowrap;
+      animation: marquee 18s linear infinite;
+    }
+
+    .ticker-line {
+      display: flex;
+      align-items: center;
+      gap: 35px;
+      padding: 15px 17px 16px;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--orange);
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ---------- Collection ---------- */
+
+    .collection-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 30px;
+      margin-bottom: 45px;
+    }
+
+    .collection-intro {
+      max-width: 430px;
+      color: #aaa49c;
+      font-size: 14px;
+    }
+
+    .collection-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .product-card {
+      background: var(--card);
+      border: 1px solid transparent;
+      transition:
+        border-color .25s ease,
+        box-shadow .25s ease,
+        transform .25s ease;
+      min-width: 0;
+    }
+
+    .product-card:hover {
+      border-color: rgba(255,107,0,.78);
+      box-shadow: 0 0 0 1px rgba(255,107,0,.12), 0 0 30px rgba(255,107,0,.07);
+      transform: translateY(-2px);
+    }
+
+    .product-image {
+      aspect-ratio: 1 / 1.08;
+      display: grid;
+      place-items: center;
+      background:
+        linear-gradient(145deg, #212121, #161616),
+        #161616;
+      border-bottom: 1px solid rgba(245,240,232,.07);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-image::after {
+      content: "IMAGE PLACEHOLDER";
+      color: #777;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .16em;
+    }
+
+    .product-meta {
+      padding: 17px 16px 18px;
+    }
+
+    .product-number {
+      color: #666;
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: .17em;
+      margin-bottom: 6px;
+    }
+
+    .product-name {
+      font-family: "Archivo Black", Impact, sans-serif;
+      font-size: 22px;
+      line-height: 1;
+      text-transform: uppercase;
+      letter-spacing: .01em;
+      margin-bottom: 12px;
+    }
+
+    .product-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      color: #bfb9af;
+      font-size: 13px;
+    }
+
+    .price {
+      color: var(--cream);
+      font-weight: 800;
+    }
+
+    .view-detail {
+      color: var(--orange);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    /* ---------- Statement ---------- */
+
+    .statement {
+      position: relative;
+      text-align: center;
+      padding: 150px 0 155px;
+      overflow: hidden;
+      background: #0d0d0d;
+    }
+
+    .statement::before {
+      content: "STATEMENT";
+      position: absolute;
+      inset: 50% auto auto 50%;
+      transform: translate(-50%, -50%);
+      color: rgba(245,240,232,.025);
+      font-family: "Archivo Black", Impact, sans-serif;
+      font-size: min(24vw, 290px);
+      line-height: 1;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    .statement-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .statement h2 {
+      font-family: "Archivo Black", Impact, sans-serif;
+      font-size: clamp(51px, 8.6vw, 123px);
+      line-height: .88;
+      text-transform: uppercase;
+      letter-spacing: -.02em;
+    }
+
+    .statement p {
+      margin: 28px auto 0;
+      max-width: 650px;
+      color: #99938b;
+      font-size: 14px;
+    }
+
+    .orange-rule {
+      width: 82px;
+      height: 4px;
+      background: var(--orange);
+      margin: 27px auto 0;
+    }
+
+    /* ---------- Spotlight ---------- */
+
+    .spotlight-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .spotlight-visual {
+      aspect-ratio: 4/4.2;
+      background:
+        linear-gradient(145deg, #1c1c1c, #121212),
+        #121212;
+      border: 1px solid var(--line);
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      position: relative;
+      min-height: 450px;
+    }
+
+    .spotlight-visual::before {
+      content: "";
+      position: absolute;
+      inset: 16px;
+      border: 1px solid rgba(245,240,232,.08);
+    }
+
+    .spotlight-copy {
+      padding-left: 15px;
+    }
+
+    .spotlight-index {
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .18em;
+      color: #69645d;
+      margin-bottom: 11px;
+    }
+
+    .spotlight-title {
+      font-family: "Archivo Black", Impact, sans-serif;
+      font-size: clamp(53px, 6.9vw, 98px);
+      line-height: .88;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .spotlight-quote {
+      border-left: 3px solid var(--orange);
+      padding: 2px 0 2px 18px;
+      color: #ddd7cf;
+      font-size: clamp(17px, 2.1vw, 24px);
+      line-height: 1.24;
+      margin-bottom: 29px;
+      max-width: 600px;
+    }
+
+    .spotlight-detail {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .spotlight-price {
+      font-family: "Archivo Black", Impact, sans-serif;
+      font-size: 38px;
+      line-height: 1;
+    }
+
+    .spotlight-nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 35px;
+    }
+
+    .spotlight-nav button {
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--line);
+      background: #111;
+      color: var(--cream);
+      transition: all .2s ease;
+      font-size: 18px;
+    }
+
+    .spotlight-nav button:hover {
+      border-color: var(--orange);
+      color: var(--orange);
+    }
+
+    .spotlight-dots {
+      display: flex;
+      gap: 7px;
+      margin-left: 3px;
+    }
+
+    .dot {
+      width: 5px;
+      height: 5px;
+      background: #4b4b4b;
+    }
+
+    .dot.active {
+      background: var(--orange);
+      width: 20px;
+    }
+
+    /* ---------- About ---------- */
+
+    .about {
+      background: #0d0d0d;
+    }
+
+    .about-inner {
+      max-width: 980px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .about-mark {
+      margin: 0 auto 25px;
+      color: var(--orange);
+    }
+
+    .about h2 {
+      font-family: "Archivo Black", Impact, sans-serif;
+      font-size: clamp(50px, 7.5vw, 100px);
+      line-height: .9;
+      text-transform: uppercase;
+      margin-bottom: 25px;
+    }
+
+    .about p {
+      max-width: 760px;
+      margin: 0 auto;
+      color: #aaa49c;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    /* ---------- Size guide ---------- */
+
+    .size-copy {
+      max-width: 630px;
+      color: #9b958d;
+      font-size: 14px;
+      margin-top: 16px;
+    }
+
+    .size-table-wrap {
+      overflow-x: auto;
+      margin-top: 42px;
+      border: 1px solid var(--line);
+    }
+
+    .size-table {
+      width: 100%;
+      min-width: 760px;
+      border-collapse: collapse;
+      background: #111;
+    }
+
+    .size-table th,
+    .size-table td {
+      padding: 15px 17px;
+      border-right: 1px solid rgba(245,240,232,.07);
+      border-bottom: 1px solid rgba(245,240,232,.07);
+      text-align: center;
+      font-size: 12px;
+    }
+
+    .size-table th:first-child,
+    .size-table td:first-child {
+      text-align: left;
+    }
+
+    .size-table thead th {
+      background: var(--orange);
+      color: var(--bg);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .size-table tbody td:first-child {
+      color: var(--cream);
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .size-table tbody td {
+      color: #a9a39a;
+    }
+
+    .size-note {
+      margin-top: 14px;
+      color: #69645e;
+      font-size: 11px;
+    }
+
+    /* ---------- Footer ---------- */
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 75px 0 26px;
+      text-align: center;
+    }
+
+    .footer-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: "Archivo Black", Impact, sans-serif;
+      font-size: 24px;
+      letter-spacing: .06em;
+    }
+
+    .footer-socials {
+      display: flex;
+      justify-content: center;
+      gap: 22px;
+      margin: 30px 0 28px;
+      color: #a6a097;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .footer-socials a:hover {
+      color: var(--orange);
+    }
+
+    .footer-line {
+      font-family: "Archivo Black", Impact, sans-serif;
+      font-size: clamp(27px, 4vw, 48px);
+      text-transform: uppercase;
+      line-height: 1.05;
+      margin-bottom: 18px;
+    }
+
+    .footer-copy {
+      color: #5f5a54;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+    }
+
+    /* ---------- Reveal ---------- */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(15px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ---------- Mobile ---------- */
+
+    @media (max-width: 1050px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-right {
+        justify-self: start;
+        width: min(100%, 560px);
+      }
+
+      .hero-placeholder {
+        min-height: 360px;
+      }
+
+      .collection-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .spotlight-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .spotlight-copy {
+        padding-left: 0;
+      }
+
+      .spotlight-visual {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 760px) {
+      :root {
+        --nav-h: 68px;
+      }
+
+      .container {
+        width: min(var(--max), calc(100% - 28px));
+      }
+
+      .section {
+        padding: 82px 0;
+      }
+
+      .nav-links,
+      .navbar > .nav-inner > .shop-btn {
+        display: none;
+      }
+
+      .nav-toggle {
+        display: inline-flex;
+      }
+
+      .mobile-menu {
+        position: absolute;
+        left: 12px;
+        right: 12px;
+        top: calc(var(--nav-h) + 7px);
+        display: grid;
+        gap: 4px;
+        background: rgba(15,15,15,.985);
+        border: 1px solid var(--line);
+        padding: 8px;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-6px);
+        transition: opacity .2s ease, transform .2s ease;
+      }
+
+      .mobile-menu.open {
+        opacity: 1;
+        pointer-events: auto;
+        transform: none;
+      }
+
+      .mobile-menu a,
+      .mobile-menu button {
+        padding: 14px 13px;
+        text-align: left;
+        text-transform: uppercase;
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: .11em;
+        color: #c7c1b7;
+        background: #131313;
+      }
+
+      .mobile-menu a:hover {
+        color: var(--orange);
+      }
+
+      .mobile-menu button {
+        background: var(--orange);
+        color: var(--bg);
+      }
+
+      .hero {
+        align-items: flex-start;
+        padding: calc(var(--nav-h) + 38px) 0 50px;
+      }
+
+      .hero h1 {
+        font-size: clamp(65px, 20vw, 112px);
+      }
+
+      .hero-grid {
+        gap: 40px;
+      }
+
+      .hero-placeholder {
+        min-height: 310px;
+      }
+
+      .collection-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .collection-grid {
+        gap: 10px;
+      }
+
+      .product-meta {
+        padding: 14px 12px 15px;
+      }
+
+      .product-name {
+        font-size: 19px;
+      }
+
+      .statement {
+        padding: 95px 0 100px;
+      }
+
+      .statement h2 {
+        font-size: clamp(50px, 15vw, 83px);
+      }
+
+      .spotlight-visual {
+        min-height: 340px;
+      }
+
+      .about p {
+        font-size: 14px;
+      }
+
+      .footer-socials {
+        gap: 15px;
+        flex-wrap: wrap;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: .001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .001ms !important;
+      }
+    }
+  
+    /* =========================================================
+       PROFESSIONAL REFINEMENT LAYER
+       ========================================================= */
+    :root {
+      --max: 1280px;
+      --nav-h: 76px;
+      --bg: #0a0a0a;
+      --bg-soft: #0f0f0f;
+      --card: #131313;
+      --cream: #f5f0e8;
+      --orange: #ff6b00;
+      --grey: #8a8a8a;
+      --line: rgba(245,240,232,.10);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--cream);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 72px));
+    }
+
+    .section {
+      padding: 120px 0;
+    }
+
+    .eyebrow {
+      font-size: 10px;
+      letter-spacing: .17em;
+    }
+
+    .navbar {
+      background: rgba(10,10,10,.62);
+      backdrop-filter: blur(8px);
+    }
+
+    .navbar.scrolled {
+      background: rgba(10,10,10,.96);
+    }
+
+    .nav-inner {
+      gap: 32px;
+    }
+
+    .brand-lockup {
+      font-size: 18px;
+      letter-spacing: .045em;
+    }
+
+    .nav-links {
+      gap: 30px;
+      font-size: 11px;
+      letter-spacing: .12em;
+      margin-left: auto;
+    }
+
+    .shop-btn {
+      padding: 12px 17px;
+      font-size: 10px;
+    }
+
+    .hero {
+      min-height: 88svh;
+      padding: calc(var(--nav-h) + 72px) 0 88px;
+    }
+
+    .hero-grid {
+      grid-template-columns: minmax(0, 1.08fr) minmax(330px, .72fr);
+      gap: 96px;
+      align-items: center;
+    }
+
+    .hero-copy {
+      max-width: 760px;
+    }
+
+    .hero h1 {
+      font-size: clamp(68px, 8.8vw, 136px);
+      line-height: .88;
+      margin: 21px 0 27px;
+    }
+
+    .hero-sub {
+      font-size: 12px;
+      color: #9f9a92;
+      letter-spacing: .18em;
+    }
+
+    .hero-bottom {
+      margin-top: 31px;
+    }
+
+    .cta-row {
+      gap: 12px;
+    }
+
+    .cta {
+      min-height: 48px;
+      padding: 14px 20px;
+      font-size: 10px;
+      letter-spacing: .11em;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-placeholder {
+      aspect-ratio: 4 / 5;
+      min-height: 0;
+      max-height: 620px;
+      background:
+        linear-gradient(145deg, #191919, #111),
+        #111;
+      box-shadow: none;
+    }
+
+    .ticker-line {
+      padding: 13px 18px;
+      font-size: 10px;
+      letter-spacing: .16em;
+      gap: 24px;
+    }
+
+    .collection-head {
+      align-items: end;
+      margin-bottom: 42px;
+    }
+
+    .collection-intro {
+      max-width: 330px;
+      font-size: 13px;
+      line-height: 1.7;
+      color: #858078;
+    }
+
+    .collection-grid {
+      gap: 16px;
+    }
+
+    .product-card {
+      background: #121212;
+    }
+
+    .product-image {
+      background: linear-gradient(145deg, #202020, #151515);
+      aspect-ratio: 1 / 1.1;
+    }
+
+    .product-meta {
+      padding: 18px 17px 19px;
+    }
+
+    .product-name {
+      font-size: 21px;
+      line-height: 1.02;
+      max-width: 95%;
+    }
+
+    .product-bottom {
+      font-size: 12px;
+    }
+
+    .statement {
+      padding: 150px 0;
+      background: #0c0c0c;
+    }
+
+    .statement h2 {
+      font-size: clamp(52px, 7.5vw, 108px);
+      line-height: .92;
+      max-width: 1050px;
+      margin: 0 auto;
+    }
+
+    .statement p {
+      margin-top: 26px;
+      font-size: 13px;
+      color: #858078;
+    }
+
+    .spotlight-layout {
+      gap: 84px;
+      align-items: center;
+    }
+
+    .spotlight-visual {
+      aspect-ratio: 1 / 1;
+      min-height: 0;
+      background: linear-gradient(145deg, #1b1b1b, #121212);
+    }
+
+    .spotlight-copy {
+      padding-left: 0;
+      max-width: 560px;
+    }
+
+    .spotlight-title {
+      font-size: clamp(54px, 6.4vw, 88px);
+      line-height: .9;
+      margin-bottom: 25px;
+    }
+
+    .spotlight-quote {
+      font-size: 18px;
+      line-height: 1.35;
+      color: #b9b2a9;
+      max-width: 490px;
+    }
+
+    .spotlight-price {
+      font-size: 34px;
+    }
+
+    .spotlight-nav {
+      margin-top: 30px;
+    }
+
+    .about {
+      background: #0c0c0c;
+    }
+
+    .about-inner {
+      max-width: 820px;
+    }
+
+    .about h2 {
+      font-size: clamp(54px, 7vw, 92px);
+      line-height: .92;
+    }
+
+    .about p {
+      max-width: 650px;
+      font-size: 14px;
+      line-height: 1.8;
+      color: #929089;
+    }
+
+    .size-copy {
+      max-width: 580px;
+      margin-top: 14px;
+      font-size: 13px;
+      color: #858078;
+    }
+
+    .size-table-wrap {
+      margin-top: 34px;
+      border-color: var(--line);
+    }
+
+    .size-table th,
+    .size-table td {
+      padding: 14px 16px;
+      font-size: 11px;
+    }
+
+    footer {
+      padding: 64px 0 24px;
+    }
+
+    .footer-line {
+      max-width: 760px;
+      margin: 0 auto 16px;
+      font-size: clamp(28px, 3.5vw, 44px);
+      line-height: 1.08;
+    }
+
+    /* Less movement / less visual noise on reveal. */
+    .reveal {
+      transform: translateY(15px);
+      transition: opacity .5s ease, transform .5s ease;
+    }
+
+    /* -------------------- TABLET -------------------- */
+    @media (max-width: 980px) {
+      .container {
+        width: min(var(--max), calc(100% - 48px));
+      }
+
+      .hero {
+        min-height: auto;
+        padding: calc(var(--nav-h) + 58px) 0 78px;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 42px;
+      }
+
+      .hero h1 {
+        font-size: clamp(60px, 10vw, 100px);
+      }
+
+      .spotlight-layout {
+        gap: 46px;
+      }
+
+      .spotlight-title {
+        font-size: clamp(48px, 7.2vw, 76px);
+      }
+    }
+
+    /* -------------------- MOBILE -------------------- */
+    @media (max-width: 700px) {
+      :root {
+        --nav-h: 64px;
+      }
+
+      .container {
+        width: calc(100% - 32px);
+      }
+
+      .section {
+        padding: 82px 0;
+      }
+
+      .navbar {
+        background: rgba(10,10,10,.92);
+        backdrop-filter: blur(12px);
+      }
+
+      .nav-inner {
+        gap: 12px;
+      }
+
+      .brand-lockup {
+        font-size: 15px;
+        gap: 8px;
+      }
+
+      .brand-lockup .wing-mark {
+        width: 24px;
+        height: 24px;
+      }
+
+      .nav-toggle {
+        margin-left: auto;
+        display: inline-flex;
+        width: 40px;
+        height: 40px;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: calc(var(--nav-h) + 42px) 0 72px;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 42px;
+      }
+
+      .hero-copy {
+        max-width: 100%;
+      }
+
+      .hero h1 {
+        font-size: clamp(57px, 17.5vw, 86px);
+        line-height: .88;
+        margin: 17px 0 23px;
+      }
+
+      .hero-sub {
+        font-size: 10px;
+        letter-spacing: .14em;
+      }
+
+      .hero-bottom {
+        margin-top: 28px;
+      }
+
+      .cta-row {
+        display: grid;
+        grid-template-columns: 1fr;
+        width: 100%;
+        max-width: 390px;
+      }
+
+      .cta {
+        width: 100%;
+        min-height: 49px;
+      }
+
+      .hero-right {
+        width: 100%;
+      }
+
+      .hero-placeholder {
+        width: 100%;
+        max-height: none;
+        aspect-ratio: 4 / 4.8;
+      }
+
+      .ticker-line {
+        padding: 12px 15px 13px;
+        font-size: 9px;
+        gap: 18px;
+      }
+
+      .collection-head {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 19px;
+        margin-bottom: 27px;
+      }
+
+      .collection-intro {
+        max-width: 320px;
+        font-size: 12px;
+        line-height: 1.65;
+      }
+
+      .collection-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 9px;
+      }
+
+      .product-image {
+        aspect-ratio: 1 / 1.15;
+      }
+
+      .product-meta {
+        padding: 12px 11px 13px;
+      }
+
+      .product-number {
+        font-size: 8px;
+        margin-bottom: 5px;
+      }
+
+      .product-name {
+        font-size: 16px;
+        line-height: 1.03;
+        min-height: 33px;
+      }
+
+      .product-bottom {
+        align-items: flex-end;
+        font-size: 11px;
+        gap: 6px;
+      }
+
+      .view-detail {
+        font-size: 8px;
+      }
+
+      .statement {
+        padding: 100px 0 104px;
+      }
+
+      .statement h2 {
+        font-size: clamp(48px, 13.5vw, 68px);
+      }
+
+      .statement p {
+        max-width: 300px;
+        font-size: 12px;
+        margin-top: 21px;
+      }
+
+      .orange-rule {
+        height: 3px;
+        width: 64px;
+        margin-top: 23px;
+      }
+
+      .spotlight-layout {
+        grid-template-columns: 1fr;
+        gap: 31px;
+      }
+
+      .spotlight-visual {
+        width: 100%;
+        aspect-ratio: 1 / 1.02;
+      }
+
+      .spotlight-copy {
+        width: 100%;
+      }
+
+      .spotlight-index {
+        font-size: 8px;
+        margin-bottom: 8px;
+      }
+
+      .spotlight-title {
+        font-size: clamp(47px, 13.5vw, 66px);
+        line-height: .91;
+        margin-bottom: 20px;
+      }
+
+      .spotlight-quote {
+        font-size: 16px;
+        line-height: 1.35;
+        padding-left: 14px;
+        margin-bottom: 23px;
+      }
+
+      .spotlight-price {
+        font-size: 30px;
+      }
+
+      .spotlight-detail {
+        gap: 12px;
+      }
+
+      .spotlight-detail .cta {
+        width: auto;
+        min-width: 155px;
+      }
+
+      .spotlight-nav {
+        margin-top: 25px;
+      }
+
+      .about-inner {
+        max-width: 100%;
+      }
+
+      .about h2 {
+        font-size: clamp(50px, 13.5vw, 67px);
+        margin-top: 14px;
+      }
+
+      .about p {
+        font-size: 13px;
+        line-height: 1.75;
+        max-width: 340px;
+      }
+
+      .size-copy {
+        max-width: 340px;
+        font-size: 12px;
+        line-height: 1.65;
+      }
+
+      .size-table-wrap {
+        margin-top: 26px;
+      }
+
+      .size-table {
+        min-width: 650px;
+      }
+
+      .size-table th,
+      .size-table td {
+        padding: 13px 12px;
+        font-size: 10px;
+      }
+
+      footer {
+        padding: 56px 0 22px;
+      }
+
+      .footer-brand {
+        font-size: 19px;
+      }
+
+      .footer-socials {
+        gap: 17px;
+        margin: 24px 0;
+        font-size: 10px;
+      }
+
+      .footer-line {
+        font-size: clamp(25px, 7.5vw, 35px);
+        max-width: 330px;
+      }
+
+      .footer-copy {
+        font-size: 8px;
+        line-height: 1.5;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .container {
+        width: calc(100% - 24px);
+      }
+
+      .hero h1 {
+        font-size: 54px;
+      }
+
+      .collection-grid {
+        gap: 7px;
+      }
+
+      .product-name {
+        font-size: 14px;
+      }
+
+      .spotlight-title {
+        font-size: 44px;
+      }
+    }
+
+  
+    /* =========================================================
+       WINGS — FINAL MOBILE + TYPOGRAPHY REFINEMENT
+       ========================================================= */
+
+    .collection-break {
+      display: none;
+    }
+
+    /* Professional editorial spacing */
+    .hero {
+      min-height: 86svh;
+    }
+
+    .hero h1 {
+      max-width: 720px;
+      font-size: clamp(64px, 8.2vw, 126px);
+      line-height: .94;
+      letter-spacing: -.035em;
+      overflow-wrap: normal;
+      word-break: normal;
+    }
+
+    .hero-sub {
+      margin-top: 0;
+    }
+
+    .collection-head {
+      margin-bottom: 48px;
+    }
+
+    .collection-head .section-title {
+      max-width: 820px;
+    }
+
+    .product-name {
+      font-family: "Archivo Black", Impact, sans-serif;
+      font-size: 18px;
+      line-height: 1.08;
+      letter-spacing: -.015em;
+    }
+
+    .statement h2 {
+      max-width: 940px;
+      font-size: clamp(48px, 6.5vw, 92px);
+      letter-spacing: -.035em;
+      line-height: .98;
+    }
+
+    .spotlight-title {
+      font-family: "Archivo Black", Impact, sans-serif;
+      font-size: clamp(50px, 6vw, 82px);
+      line-height: .98;
+      letter-spacing: -.035em;
+      max-width: 680px;
+    }
+
+    .about h2 {
+      font-family: "Archivo Black", Impact, sans-serif;
+      letter-spacing: -.03em;
+    }
+
+    .footer-line {
+      font-family: "Archivo Black", Impact, sans-serif;
+      letter-spacing: -.02em;
+    }
+
+    /* -------------------- TABLET -------------------- */
+    @media (max-width: 980px) {
+      .hero {
+        min-height: auto;
+        padding-top: calc(var(--nav-h) + 52px);
+      }
+
+      .hero h1 {
+        font-size: clamp(58px, 9.2vw, 92px);
+        line-height: .96;
+      }
+
+      .spotlight-title {
+        font-size: clamp(46px, 6.5vw, 66px);
+      }
+    }
+
+    /* -------------------- PHONE -------------------- */
+    @media (max-width: 700px) {
+      .container {
+        width: calc(100% - 32px);
+      }
+
+      .section {
+        padding: 76px 0;
+      }
+
+      .hero {
+        padding: calc(var(--nav-h) + 34px) 0 68px;
+      }
+
+      .hero-grid {
+        gap: 38px;
+      }
+
+      .hero h1 {
+        font-size: clamp(56px, 16vw, 78px);
+        line-height: .98;
+        letter-spacing: -.03em;
+        margin: 16px 0 22px;
+        max-width: 345px;
+      }
+
+      .hero-sub {
+        font-size: 10px;
+        letter-spacing: .13em;
+      }
+
+      .hero-placeholder {
+        aspect-ratio: 1 / 1.05;
+      }
+
+      .collection-head {
+        margin-bottom: 28px;
+        gap: 17px;
+      }
+
+      .collection-head .section-title {
+        font-size: clamp(45px, 13vw, 64px);
+        line-height: 1;
+      }
+
+      .collection-break {
+        display: block;
+      }
+
+      .collection-grid {
+        gap: 10px;
+      }
+
+      .product-image {
+        aspect-ratio: 1 / 1.05;
+      }
+
+      .product-meta {
+        padding: 13px 11px 14px;
+      }
+
+      .product-number {
+        font-size: 7px;
+        letter-spacing: .14em;
+      }
+
+      .product-name {
+        font-size: 14px;
+        line-height: 1.08;
+        min-height: 31px;
+        letter-spacing: -.01em;
+      }
+
+      .product-bottom {
+        margin-top: 9px;
+        font-size: 10px;
+      }
+
+      .view-detail {
+        font-size: 7px;
+        letter-spacing: .12em;
+      }
+
+      .statement {
+        padding: 94px 0;
+      }
+
+      .statement h2 {
+        max-width: 350px;
+        font-size: clamp(45px, 12.3vw, 64px);
+        line-height: 1.0;
+        letter-spacing: -.035em;
+      }
+
+      .statement p {
+        max-width: 285px;
+        line-height: 1.6;
+      }
+
+      .spotlight-layout {
+        gap: 28px;
+      }
+
+      .spotlight-visual {
+        aspect-ratio: 1 / 1;
+      }
+
+      .spotlight-title {
+        font-size: clamp(45px, 12.5vw, 64px);
+        line-height: 1.0;
+        letter-spacing: -.035em;
+        max-width: 350px;
+        margin-bottom: 19px;
+      }
+
+      .spotlight-quote {
+        font-size: 15px;
+        max-width: 330px;
+      }
+
+      .spotlight-detail {
+        align-items: center;
+      }
+
+      .spotlight-price {
+        font-size: 28px;
+      }
+
+      .spotlight-detail .cta {
+        min-width: 145px;
+      }
+
+      .about {
+        padding: 86px 0;
+      }
+
+      .about h2 {
+        max-width: 350px;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: clamp(45px, 12.5vw, 63px);
+        line-height: 1.0;
+      }
+
+      .about p {
+        max-width: 320px;
+        line-height: 1.72;
+      }
+
+      .size-guide .section-title,
+      #size-title {
+        font-size: clamp(48px, 13vw, 66px);
+      }
+
+      .footer-line {
+        max-width: 340px;
+        font-size: clamp(24px, 7vw, 32px);
+        line-height: 1.08;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .container {
+        width: calc(100% - 24px);
+      }
+
+      .hero h1 {
+        font-size: 52px;
+      }
+
+      .collection-head .section-title {
+        font-size: 46px;
+      }
+
+      .product-name {
+        font-size: 13px;
+      }
+
+      .statement h2,
+      .spotlight-title,
+      .about h2 {
+        font-size: 43px;
+      }
+    }
+
+  
+    /* ---------- Real product media ---------- */
+    .real-image-wrap {
+      overflow: hidden;
+      background: #111;
+    }
+
+    .real-image-wrap img,
+    .spotlight-visual img,
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .product-image img {
+      transition: transform .6s cubic-bezier(.2,.6,.2,1);
+    }
+
+    .product-card:hover .product-image img {
+      transform: scale(1.018);
+    }
+
+    /* ---------- Account ---------- */
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .account-btn {
+      background: transparent;
+      color: var(--cream);
+      border: 1px solid rgba(245,240,232,.26);
+      min-height: 43px;
+      padding: 0 15px;
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      transition: all .2s ease;
+    }
+
+    .account-btn:hover {
+      color: var(--orange);
+      border-color: var(--orange);
+    }
+
+    /* ---------- Auth modal ---------- */
+    .auth-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: grid;
+      place-items: center;
+      padding: 18px;
+      background: rgba(0,0,0,.76);
+      backdrop-filter: blur(14px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .2s ease;
+    }
+
+    .auth-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .auth-panel {
+      position: relative;
+      width: min(470px, 100%);
+      padding: 40px;
+      background: #111;
+      border: 1px solid rgba(245,240,232,.14);
+      box-shadow: 0 30px 100px rgba(0,0,0,.55);
+      transform: translateY(12px);
+      transition: transform .25s ease;
+    }
+
+    .auth-overlay.open .auth-panel {
+      transform: none;
+    }
+
+    .auth-close {
+      position: absolute;
+      top: 10px;
+      right: 13px;
+      width: 38px;
+      height: 38px;
+      background: transparent;
+      color: #888;
+      font-size: 27px;
+      line-height: 1;
+    }
+
+    .auth-close:hover { color: var(--cream); }
+
+    .auth-kicker {
+      color: var(--orange);
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .auth-panel h2 {
+      font-family: "Archivo Black", Impact, sans-serif;
+      font-size: clamp(34px, 8vw, 54px);
+      line-height: .94;
+      letter-spacing: -.035em;
+      margin-bottom: 11px;
+    }
+
+    .auth-sub {
+      color: #8e8982;
+      font-size: 13px;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .auth-label {
+      display: block;
+      color: #8e8982;
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      margin: 15px 0 7px;
+    }
+
+    .auth-input {
+      width: 100%;
+      height: 47px;
+      padding: 0 13px;
+      border: 1px solid rgba(245,240,232,.13);
+      border-radius: 0;
+      background: #0c0c0c;
+      color: var(--cream);
+      outline: none;
+      font-size: 13px;
+    }
+
+    .auth-input:focus {
+      border-color: var(--orange);
+    }
+
+    .auth-error {
+      display: none;
+      margin-top: 12px;
+      color: #ff9c73;
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    .auth-error.show { display: block; }
+
+    .auth-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin: 14px 0 20px;
+      color: #5e5a55;
+      font-size: 9px;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+
+    .auth-link {
+      color: #aba59c;
+      font-size: 9px;
+      letter-spacing: .08em;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-transform: uppercase;
+    }
+
+    .auth-submit {
+      width: 100%;
+      min-height: 49px;
+      background: var(--orange);
+      color: var(--bg);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      transition: transform .15s ease, box-shadow .2s ease;
+    }
+
+    .auth-submit:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 28px rgba(255,107,0,.18);
+    }
+
+    .auth-submit:disabled {
+      opacity: .55;
+      pointer-events: none;
+    }
+
+    .auth-switch {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 20px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(245,240,232,.09);
+      color: #65615b;
+      font-size: 10px;
+    }
+
+    .auth-switch button {
+      color: var(--cream);
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .auth-hint {
+      color: #5f5b56;
+      font-size: 10px;
+      margin-top: 5px;
+    }
+
+    .auth-note {
+      color: #4e4b46;
+      font-size: 9px;
+      line-height: 1.5;
+      margin-top: 21px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    .account-divider {
+      height: 1px;
+      margin-top: 24px;
+      background: rgba(245,240,232,.10);
+    }
+
+    .auth-account-link {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(245,240,232,.10);
+      color: var(--cream);
+      background: transparent;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .13em;
+      text-align: left;
+    }
+
+    .auth-account-link:hover { color: var(--orange); }
+    .auth-account-link span { color: #66615b; font-size: 16px; }
+
+    @media (max-width: 700px) {
+      .nav-actions .shop-btn { display: none; }
+
+      .account-btn {
+        min-height: 40px;
+        padding: 0 12px;
+        font-size: 8px;
+      }
+
+      .auth-panel {
+        padding: 29px 22px 23px;
+      }
+
+      .auth-panel h2 {
+        font-size: 40px;
+      }
+
+      .auth-row,
+      .auth-switch {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .hero-placeholder,
+      .spotlight-visual {
+        min-height: 0;
+      }
+
+      .hero-placeholder {
+        aspect-ratio: 1 / 1;
+      }
+
+      .product-image {
+        aspect-ratio: 1 / 1;
+      }
+    }
+
+  </style>
+
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin>
+  <link rel="preload" as="image" href="https://cdn.jsdelivr.net/gh/wings-was-taken/wings-was-taken.github.io@main/file_0000000017088211b2f767fbcb88cb9b.png" fetchpriority="high">
+  <link rel="preload" as="image" href="https://cdn.jsdelivr.net/gh/wings-was-taken/wings-was-taken.github.io@main/file_0000000024888211a7dfb85d6cd31f81.png" fetchpriority="high">
+
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="#top" class="brand-lockup" aria-label="Wings home">
+        <svg class="wing-mark" viewBox="0 0 64 64" aria-hidden="true">
+          <path
+            d="M6 39c12-3 19-11 25-24 3 9 9 14 18 15-4 4-9 7-16 8 7 0 13-2 20-6-3 8-12 16-24 17C17 50 10 46 6 39Z"
+            fill="currentColor"
+          />
+          <path
+            d="M11 43c6 0 11-2 15-5 4-3 8-7 11-12"
+            fill="none"
+            stroke="#0a0a0a"
+            stroke-width="3"
+            stroke-linecap="round"
+          />
+        </svg>
+        <span>WINGS</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#collection">Drop</a>
+        <a href="#about">About</a>
+        <a href="#size-guide">Size Guide</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button type="button" class="account-btn" id="accountBtn">LOGIN</button>
+        <a href="#collection" class="shop-btn">SHOP NOW</a>
+      </div>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+      </button>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#collection">Drop</a>
+      <a href="#about">About</a>
+      <a href="#size-guide">Size Guide</a>
+      <button type="button" id="mobileAccountBtn">Login</button>
+      <button type="button" onclick="document.querySelector('#collection').scrollIntoView({behavior:'smooth'}); closeMobileMenu();">
+        Shop Now
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <span class="eyebrow">WINGS / 001</span>
+          <h1 id="hero-title">THE<br />GENESIS<br />DROP</h1>
+          <p class="hero-sub">8 PIECES. ONE STATEMENT.</p>
+
+          <div class="hero-bottom">
+<div class="cta-row">
+              <a class="cta primary" href="#collection">SHOP THE DROP</a>
+              <a class="cta secondary" href="#collection">SEE THE COLLECTION</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-right reveal">
+          <div class="hero-placeholder real-image-wrap">
+            <img
+              src="https://cdn.jsdelivr.net/gh/wings-was-taken/wings-was-taken.github.io@main/file_0000000017088211b2f767fbcb88cb9b.png"
+              data-fallback="https://raw.githubusercontent.com/wings-was-taken/wings-was-taken.github.io/refs/heads/main/file_0000000017088211b2f767fbcb88cb9b.png"
+              alt="WINGS — Take Your Dreams Seriously"
+              width="1024" height="1024"
+              loading="eager" fetchpriority="high" decoding="async"
+            />
+          </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TICKER -->
+    <div class="ticker" aria-label="Drop announcement">
+      <div class="ticker-track">
+        <div class="ticker-line">
+          <span>WINGS</span><span>—</span>
+          <span>LIMITED EDITION</span><span>—</span>
+          <span>8 PIECES</span><span>—</span>
+          <span>DROP NOW LIVE</span><span>—</span>
+          <span>WINGS</span><span>—</span>
+          <span>LIMITED EDITION</span><span>—</span>
+          <span>8 PIECES</span><span>—</span>
+          <span>DROP NOW LIVE</span><span>—</span>
+        </div>
+        <div class="ticker-line" aria-hidden="true">
+          <span>WINGS</span><span>—</span>
+          <span>LIMITED EDITION</span><span>—</span>
+          <span>8 PIECES</span><span>—</span>
+          <span>DROP NOW LIVE</span><span>—</span>
+          <span>WINGS</span><span>—</span>
+          <span>LIMITED EDITION</span><span>—</span>
+          <span>8 PIECES</span><span>—</span>
+          <span>DROP NOW LIVE</span><span>—</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLLECTION -->
+    <section class="section" id="collection" aria-labelledby="collection-title">
+      <div class="container">
+        <div class="collection-head reveal">
+          <div>
+            <span class="eyebrow">THE GENESIS DROP</span>
+            <h2 id="collection-title" class="section-title" style="margin-top:14px;">THE GENESIS<br class="collection-break"> DROP</h2>
+          </div>
+          <p class="collection-intro">
+            Eight considered pieces. One focused statement.
+          </p>
+        </div>
+
+        <div class="collection-grid" id="collectionGrid"></div>
+      </div>
+    </section>
+
+    <!-- STATEMENT -->
+    <section class="statement section" aria-labelledby="statement-title">
+      <div class="container statement-inner reveal">
+        <span class="eyebrow">WHY GENESIS</span>
+        <h2 id="statement-title">WE DON'T MAKE CLOTHES.<br />WE MAKE STATEMENTS.</h2>
+        <p>
+          Designed for people who move with intent.
+        </p>
+        <div class="orange-rule"></div>
+      </div>
+    </section>
+
+    <!-- SPOTLIGHT -->
+    <section class="section" id="spotlight" aria-labelledby="spotlight-title">
+      <div class="container">
+        <span class="eyebrow reveal">FEATURED DESIGN</span>
+
+        <div class="spotlight-layout" style="margin-top:22px;">
+          <div class="spotlight-visual reveal" id="spotlightVisual">
+            <img
+              id="spotlightImage"
+              src="https://cdn.jsdelivr.net/gh/wings-was-taken/wings-was-taken.github.io@main/file_0000000017088211b2f767fbcb88cb9b.png"
+              data-fallback="https://raw.githubusercontent.com/wings-was-taken/wings-was-taken.github.io/refs/heads/main/file_0000000017088211b2f767fbcb88cb9b.png"
+              alt="Featured WINGS tee"
+              width="1024" height="1024"
+              loading="lazy" decoding="async"
+            />
+          </div>
+          </div>
+
+          <div class="spotlight-copy reveal">
+            <div class="spotlight-index" id="spotlightIndex">01 / 08</div>
+            <h2 class="spotlight-title" id="spotlightTitle">TAKE YOUR DREAM SERIOUSLY</h2>
+            <p class="spotlight-quote" id="spotlightQuote">“YOUR FUTURE WON'T BUILD ITSELF.”</p>
+
+            <div class="spotlight-detail">
+              <div class="spotlight-price" id="spotlightPrice">₹499</div>
+              <a href="#collection" class="cta primary" id="spotlightCart">ADD TO CART</a>
+            </div>
+
+            <div class="spotlight-nav" aria-label="Featured design controls">
+              <button type="button" id="prevSpot" aria-label="Previous design">←</button>
+              <button type="button" id="nextSpot" aria-label="Next design">→</button>
+              <div class="spotlight-dots" id="spotlightDots"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section about" id="about" aria-labelledby="about-title">
+      <div class="container about-inner reveal">
+        <svg class="wing-mark about-mark" viewBox="0 0 64 64" aria-hidden="true">
+          <path
+            d="M6 39c12-3 19-11 25-24 3 9 9 14 18 15-4 4-9 7-16 8 7 0 13-2 20-6-3 8-12 16-24 17C17 50 10 46 6 39Z"
+            fill="currentColor"
+          />
+          <path
+            d="M11 43c6 0 11-2 15-5 4-3 8-7 11-12"
+            fill="none"
+            stroke="#0a0a0a"
+            stroke-width="3"
+            stroke-linecap="round"
+          />
+        </svg>
+
+        <span class="eyebrow">ABOUT THE DROP</span>
+        <h2 id="about-title" style="margin-top:15px;">FIRST OF ITS KIND.</h2>
+        <p>
+          Genesis is our first collection — eight pieces built around a simple idea: wear what you believe.
+          Designed in India with a direct, uncompromising point of view.
+        </p>
+      </div>
+    </section>
+
+    <!-- SIZE GUIDE -->
+    <section class="section" id="size-guide" aria-labelledby="size-title">
+      <div class="container">
+        <span class="eyebrow reveal">FIT REFERENCE</span>
+        <h2 class="section-title reveal" id="size-title" style="margin-top:15px;">SIZE GUIDE</h2>
+        <p class="size-copy reveal">
+          Measurements are garment measurements in centimetres. For an oversized fit, choose your usual size.
+        </p>
+
+        <div class="size-table-wrap reveal">
+          <table class="size-table">
+            <thead>
+              <tr>
+                <th>Measurement</th>
+                <th>XS</th>
+                <th>S</th>
+                <th>M</th>
+                <th>L</th>
+                <th>XL</th>
+                <th>XXL</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Chest</td>
+                <td>92</td>
+                <td>98</td>
+                <td>104</td>
+                <td>110</td>
+                <td>116</td>
+                <td>122</td>
+              </tr>
+              <tr>
+                <td>Length</td>
+                <td>67</td>
+                <td>69</td>
+                <td>71</td>
+                <td>73</td>
+                <td>75</td>
+                <td>77</td>
+              </tr>
+              <tr>
+                <td>Shoulder</td>
+                <td>43</td>
+                <td>45</td>
+                <td>47</td>
+                <td>49</td>
+                <td>51</td>
+                <td>53</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="size-note reveal">Need a different fit? Use the garment measurements above before ordering.</div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-brand">
+        <svg class="wing-mark orange" viewBox="0 0 64 64" aria-hidden="true">
+          <path
+            d="M6 39c12-3 19-11 25-24 3 9 9 14 18 15-4 4-9 7-16 8 7 0 13-2 20-6-3 8-12 16-24 17C17 50 10 46 6 39Z"
+            fill="currentColor"
+          />
+          <path
+            d="M11 43c6 0 11-2 15-5 4-3 8-7 11-12"
+            fill="none"
+            stroke="#0a0a0a"
+            stroke-width="3"
+            stroke-linecap="round"
+          />
+        </svg>
+        <span>WINGS</span>
+      </div>
+
+      <div class="footer-socials">
+        <a href="#" aria-label="Instagram">Instagram</a>
+        <a href="#" aria-label="WhatsApp">WhatsApp</a>
+        <a href="#about">About</a>
+      </div>
+
+      <div class="footer-line">MADE IN INDIA. BUILT FOR THE RELENTLESS.</div>
+      <div class="footer-copy">© <span id="year"></span> WINGS. ALL RIGHTS RESERVED.</div>
+    </div>
+  </footer>
+
+    <div class="auth-overlay" id="authOverlay" aria-hidden="true">
+    <div class="auth-panel" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+      <button class="auth-close" type="button" id="authClose" aria-label="Close">×</button>
+
+      <div id="authForms">
+        <div class="auth-kicker">WINGS / MEMBERS</div>
+        <h2 id="authTitle">WELCOME BACK.</h2>
+        <p class="auth-sub" id="authSub">Log in to your WINGS account.</p>
+
+        <form id="loginForm" novalidate>
+          <label class="auth-label" for="loginEmail">Email</label>
+          <input class="auth-input" id="loginEmail" type="email" autocomplete="email" required>
+
+          <label class="auth-label" for="loginPassword">Password</label>
+          <input class="auth-input" id="loginPassword" type="password" autocomplete="current-password" required>
+
+          <div class="auth-error" id="loginError" role="alert"></div>
+
+          <div class="auth-row">
+            <button class="auth-link" id="forgotPassword" type="button">Forgot password?</button>
+            <span>Secure account access</span>
+          </div>
+
+          <button class="auth-submit" type="submit">LOG IN</button>
+        </form>
+
+        <form id="signupForm" novalidate hidden>
+          <label class="auth-label" for="signupName">Full name</label>
+          <input class="auth-input" id="signupName" type="text" autocomplete="name" required>
+
+          <label class="auth-label" for="signupEmail">Email</label>
+          <input class="auth-input" id="signupEmail" type="email" autocomplete="email" required>
+
+          <label class="auth-label" for="signupPassword">Password</label>
+          <input class="auth-input" id="signupPassword" type="password" autocomplete="new-password" required>
+          <div class="auth-hint">Minimum 6 characters.</div>
+
+          <label class="auth-label" for="signupConfirm">Confirm password</label>
+          <input class="auth-input" id="signupConfirm" type="password" autocomplete="new-password" required>
+
+          <div class="auth-error" id="signupError" role="alert"></div>
+          <button class="auth-submit" type="submit">CREATE ACCOUNT</button>
+        </form>
+
+        <div class="auth-switch">
+          <span id="authSwitchText">New to WINGS?</span>
+          <button type="button" id="authSwitchBtn">CREATE ACCOUNT</button>
+        </div>
+      </div>
+
+      <div id="accountView" hidden>
+        <div class="auth-kicker">WINGS / ACCOUNT</div>
+        <h2>YOU'RE IN.</h2>
+        <p class="auth-sub" id="accountEmail">—</p>
+        <div class="account-divider"></div>
+        <button class="auth-account-link" type="button" id="accountShopBtn">
+          SHOP THE GENESIS DROP <span>→</span>
+        </button>
+        <button class="auth-account-link" type="button" id="logoutBtn">
+          LOG OUT <span>↗</span>
+        </button>
+      </div>
+
+      <p class="auth-note" id="authNote">Your account is handled securely through Supabase Auth.</p>
+    </div>
+  </div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+
+    const products = [{"id":1,"name":"Take Your Dreams Seriously","price":699,"quote":"YOUR FUTURE WON'T BUILD ITSELF.","img":"https://cdn.jsdelivr.net/gh/wings-was-taken/wings-was-taken.github.io@main/file_0000000017088211b2f767fbcb88cb9b.png","fallback":"https://raw.githubusercontent.com/wings-was-taken/wings-was-taken.github.io/refs/heads/main/file_0000000017088211b2f767fbcb88cb9b.png"},{"id":2,"name":"Believe In Yourself When No One Does","price":599,"quote":"BELIEVE IN YOURSELF WHEN NO ONE DOES.","img":"https://cdn.jsdelivr.net/gh/wings-was-taken/wings-was-taken.github.io@main/file_0000000024888211a7dfb85d6cd31f81.png","fallback":"https://raw.githubusercontent.com/wings-was-taken/wings-was-taken.github.io/refs/heads/main/file_0000000024888211a7dfb85d6cd31f81.png"},{"id":3,"name":"Never Stop Moving Forward","price":649,"quote":"NEVER STOP MOVING FORWARD.","img":"https://cdn.jsdelivr.net/gh/wings-was-taken/wings-was-taken.github.io@main/file_00000000d17482118b15d3fd6cfab327.png","fallback":"https://raw.githubusercontent.com/wings-was-taken/wings-was-taken.github.io/refs/heads/main/file_00000000d17482118b15d3fd6cfab327.png"},{"id":4,"name":"You Lose When You Quit","price":599,"quote":"YOU LOSE WHEN YOU QUIT.","img":"https://cdn.jsdelivr.net/gh/wings-was-taken/wings-was-taken.github.io@main/file_00000000ff908211a740a1173b2cf7b7.png","fallback":"https://raw.githubusercontent.com/wings-was-taken/wings-was-taken.github.io/refs/heads/main/file_00000000ff908211a740a1173b2cf7b7.png"},{"id":5,"name":"Learn To Walk Before You Fly","price":649,"quote":"LEARN TO WALK BEFORE YOU FLY.","img":"https://cdn.jsdelivr.net/gh/wings-was-taken/wings-was-taken.github.io@main/file_0000000030b48211a1678a9032a536c5.png","fallback":"https://raw.githubusercontent.com/wings-was-taken/wings-was-taken.github.io/refs/heads/main/file_0000000030b48211a1678a9032a536c5.png"},{"id":6,"name":"Even The Stars Need Darkness To Shine","price":599,"quote":"EVEN THE STARS NEED DARKNESS TO SHINE.","img":"https://cdn.jsdelivr.net/gh/wings-was-taken/wings-was-taken.github.io@main/file_0000000052788211b1a4fcfaa6cbf855.png","fallback":"https://raw.githubusercontent.com/wings-was-taken/wings-was-taken.github.io/refs/heads/main/file_0000000052788211b1a4fcfaa6cbf855.png"},{"id":7,"name":"I Am Better Than That","price":699,"quote":"I AM BETTER THAN THAT.","img":"https://cdn.jsdelivr.net/gh/wings-was-taken/wings-was-taken.github.io@main/file_000000006cd0821198cf1da7410f1a6e.png","fallback":"https://raw.githubusercontent.com/wings-was-taken/wings-was-taken.github.io/refs/heads/main/file_000000006cd0821198cf1da7410f1a6e.png"},{"id":8,"name":"If You're Tired, Do It Tired","price":649,"quote":"IF YOU'RE TIRED, DO IT TIRED.","img":"https://cdn.jsdelivr.net/gh/wings-was-taken/wings-was-taken.github.io@main/file_00000000957c82119ca6d9eb2b2a27a5.png","fallback":"https://raw.githubusercontent.com/wings-was-taken/wings-was-taken.github.io/refs/heads/main/file_00000000957c82119ca6d9eb2b2a27a5.png"}];
+
+    const $ = (id) => document.getElementById(id);
+    const pad = (n) => String(n).padStart(2, "0");
+    const money = (n) => `₹${n.toLocaleString("en-IN")}`;
+
+    function setImageFallback(img) {
+      if (!img || img.dataset.fallbackBound === "1") return;
+      img.dataset.fallbackBound = "1";
+      img.addEventListener("error", () => {
+        const fallback = img.dataset.fallback;
+        if (fallback && img.src !== fallback) img.src = fallback;
+      });
+    }
+
+    document.querySelectorAll("img[data-fallback]").forEach(setImageFallback);
+
+    // ---------- Navbar ----------
+    const navbar = $("navbar");
+    const updateNavbar = () => navbar.classList.toggle("scrolled", window.scrollY > 18);
+    window.addEventListener("scroll", updateNavbar, { passive: true });
+    updateNavbar();
+
+    // ---------- Mobile navigation ----------
+    const navToggle = $("navToggle");
+    const mobileMenu = $("mobileMenu");
+
+    function closeMobileMenu() {
+      mobileMenu.classList.remove("open");
+      navToggle.setAttribute("aria-expanded", "false");
+    }
+    window.closeMobileMenu = closeMobileMenu;
+
+    navToggle.addEventListener("click", () => {
+      const open = mobileMenu.classList.toggle("open");
+      navToggle.setAttribute("aria-expanded", String(open));
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!mobileMenu.contains(event.target) && !navToggle.contains(event.target)) {
+        closeMobileMenu();
+      }
+    });
+
+    document.querySelectorAll("#mobileMenu a").forEach((a) => {
+      a.addEventListener("click", closeMobileMenu);
+    });
+
+    // ---------- Product collection ----------
+    const collectionGrid = $("collectionGrid");
+
+    products.forEach((product, index) => {
+      const card = document.createElement("article");
+      card.className = "product-card reveal";
+      card.innerHTML = `
+        <div class="product-image">
+          <img
+            src="${product.img}"
+            data-fallback="${product.fallback}"
+            alt="WINGS — ${product.name}"
+            width="1024" height="1024"
+            ${index < 2 ? 'fetchpriority="high"' : 'loading="lazy"'}
+            decoding="async"
+          />
+        </div>
+        <div class="product-meta">
+          <div class="product-number">${pad(index + 1)} / 08</div>
+          <h3 class="product-name">${product.name}</h3>
+          <div class="product-bottom">
+            <span class="price">${money(product.price)}</span>
+            <button class="view-detail" type="button" data-index="${index}" aria-label="View ${product.name}">
+              VIEW
+            </button>
+          </div>
+        </div>
+      `;
+      collectionGrid.appendChild(card);
+      setImageFallback(card.querySelector("img"));
+    });
+
+    // ---------- Featured design ----------
+    let activeIndex = 0;
+    const spotlightTitle = $("spotlightTitle");
+    const spotlightQuote = $("spotlightQuote");
+    const spotlightPrice = $("spotlightPrice");
+    const spotlightIndex = $("spotlightIndex");
+    const spotlightDots = $("spotlightDots");
+    const spotlightImage = $("spotlightImage");
+    const spotlightVisual = $("spotlightVisual");
+
+    function renderDots() {
+      spotlightDots.innerHTML = products.map((_, index) =>
+        `<button class="dot ${index === activeIndex ? "active" : ""}" type="button"
+          aria-label="Go to design ${index + 1}" data-spot-index="${index}"></button>`
+      ).join("");
+
+      spotlightDots.querySelectorAll(".dot").forEach((dot) => {
+        dot.addEventListener("click", () => {
+          activeIndex = Number(dot.dataset.spotIndex);
+          renderSpotlight();
+        });
+      });
+    }
+
+    function renderSpotlight() {
+      const product = products[activeIndex];
+
+      spotlightImage.style.opacity = "0";
+      spotlightImage.onload = () => {
+        spotlightImage.style.opacity = "1";
+      };
+      spotlightImage.dataset.fallback = product.fallback;
+      spotlightImage.dataset.fallbackBound = "0";
+      spotlightImage.removeAttribute("data-fallback-bound");
+      setImageFallback(spotlightImage);
+      spotlightImage.src = product.img;
+      spotlightImage.alt = `WINGS — ${product.name}`;
+
+      spotlightTitle.textContent = product.name;
+      spotlightQuote.textContent = `“${product.quote}”`;
+      spotlightPrice.textContent = money(product.price);
+      spotlightIndex.textContent = `${pad(activeIndex + 1)} / 08`;
+      spotlightVisual.setAttribute("aria-label", `${product.name} product image`);
+      renderDots();
+    }
+
+    $("prevSpot").addEventListener("click", () => {
+      activeIndex = (activeIndex - 1 + products.length) % products.length;
+      renderSpotlight();
+    });
+
+    $("nextSpot").addEventListener("click", () => {
+      activeIndex = (activeIndex + 1) % products.length;
+      renderSpotlight();
+    });
+
+    collectionGrid.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-index]");
+      if (!button) return;
+      activeIndex = Number(button.dataset.index);
+      renderSpotlight();
+      $("spotlight").scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+
+    renderSpotlight();
+
+    // ---------- Scroll reveal ----------
+    const revealItems = document.querySelectorAll(".reveal");
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver((entries, io) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08 });
+      revealItems.forEach((el) => observer.observe(el));
+    } else {
+      revealItems.forEach((el) => el.classList.add("visible"));
+    }
+
+    $("year").textContent = new Date().getFullYear();
+
+    // ---------- Extracted WING auth system ----------
+    // Same Supabase email/password flow used in the supplied WING storefront:
+    // sign in, sign up with full_name metadata, session restore/listener,
+    // password reset, and logout.
+    const SUPABASE_URL = "https://ckolqrstldnjnkfpypyf.supabase.co";
+    const SUPABASE_PUBLISHABLE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNrb2xxcnN0bGRuam5rZnB5cHlmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA0Mjc0NzQsImV4cCI6MjEwNjAwMzQ3NH0.1JJ7j6B5OyXmE7w04BkIlCPZnb1NFBIUCvnSpZFOS1A";
+
+    let supabaseClient = null;
+    let currentUser = null;
+
+    const authOverlay = $("authOverlay");
+    const authForms = $("authForms");
+    const accountView = $("accountView");
+    const authTitle = $("authTitle");
+    const authSub = $("authSub");
+    const authSwitchText = $("authSwitchText");
+    const authSwitchBtn = $("authSwitchBtn");
+    const authNote = $("authNote");
+    const accountEmail = $("accountEmail");
+    const loginError = $("loginError");
+    const signupError = $("signupError");
+    const accountBtn = $("accountBtn");
+    const mobileAccountBtn = $("mobileAccountBtn");
+
+    const validEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+
+    function setError(el, message = "") {
+      el.textContent = message;
+      el.classList.toggle("show", Boolean(message));
+    }
+
+    function setAuthMode(mode) {
+      const isSignup = mode === "signup";
+      $("loginForm").hidden = isSignup;
+      $("signupForm").hidden = !isSignup;
+      authTitle.textContent = isSignup ? "CREATE ACCOUNT." : "WELCOME BACK.";
+      authSub.textContent = isSignup
+        ? "Create your WINGS member account."
+        : "Log in to your WINGS account.";
+      authSwitchText.textContent = isSignup ? "Already a member?" : "New to WINGS?";
+      authSwitchBtn.textContent = isSignup ? "LOG IN" : "CREATE ACCOUNT";
+      setError(loginError);
+      setError(signupError);
+    }
+
+    function openAuth() {
+      authOverlay.classList.add("open");
+      authOverlay.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+
+      if (currentUser) {
+        authForms.hidden = true;
+        accountView.hidden = false;
+        authNote.hidden = true;
+        accountEmail.textContent = currentUser.email || "WINGS member";
+        return;
+      }
+
+      authForms.hidden = false;
+      accountView.hidden = true;
+      authNote.hidden = false;
+      setAuthMode("login");
+      setTimeout(() => $("loginEmail").focus(), 30);
+    }
+
+    function closeAuth() {
+      authOverlay.classList.remove("open");
+      authOverlay.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+      setError(loginError);
+      setError(signupError);
+    }
+
+    $("authClose").addEventListener("click", closeAuth);
+    authOverlay.addEventListener("click", (event) => {
+      if (event.target === authOverlay) closeAuth();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && authOverlay.classList.contains("open")) closeAuth();
+    });
+
+    accountBtn.addEventListener("click", openAuth);
+    mobileAccountBtn.addEventListener("click", () => {
+      closeMobileMenu();
+      openAuth();
+    });
+
+    authSwitchBtn.addEventListener("click", () => {
+      setAuthMode($("signupForm").hidden ? "signup" : "login");
+    });
+
+    $("forgotPassword").addEventListener("click", async () => {
+      if (!supabaseClient) return;
+
+      const email = $("loginEmail").value.trim().toLowerCase();
+      if (!validEmail(email)) {
+        setError(loginError, "Enter your account email first.");
+        $("loginEmail").focus();
+        return;
+      }
+
+      const redirectTo = /^https?:$/i.test(location.protocol)
+        ? `${location.origin}${location.pathname}`
+        : undefined;
+
+      const { error } = await supabaseClient.auth.resetPasswordForEmail(
+        email,
+        redirectTo ? { redirectTo } : undefined
+      );
+
+      if (error) {
+        setError(loginError, error.message);
+      } else {
+        setError(loginError);
+        authSub.textContent = "Password reset email sent. Check your inbox.";
+      }
+    });
+
+    $("loginForm").addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (!supabaseClient) return;
+
+      const email = $("loginEmail").value.trim().toLowerCase();
+      const password = $("loginPassword").value;
+
+      if (!validEmail(email)) {
+        setError(loginError, "Enter a valid email address.");
+        return;
+      }
+      if (!password) {
+        setError(loginError, "Enter your password.");
+        return;
+      }
+
+      const button = $("loginForm").querySelector(".auth-submit");
+      button.disabled = true;
+      button.textContent = "LOGGING IN…";
+      setError(loginError);
+
+      try {
+        const { data, error } = await supabaseClient.auth.signInWithPassword({
+          email,
+          password
+        });
+
+        if (error) {
+          setError(loginError, error.message);
+          return;
+        }
+
+        currentUser = data.user || null;
+        updateAccountButtons();
+        closeAuth();
+        toast("Login successful.");
+      } catch (error) {
+        setError(loginError, error?.message || "Login failed. Try again.");
+      } finally {
+        button.disabled = false;
+        button.textContent = "LOG IN";
+      }
+    });
+
+    $("signupForm").addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (!supabaseClient) return;
+
+      const name = $("signupName").value.trim();
+      const email = $("signupEmail").value.trim().toLowerCase();
+      const password = $("signupPassword").value;
+      const confirm = $("signupConfirm").value;
+
+      if (!name) {
+        setError(signupError, "Enter your full name.");
+        return;
+      }
+      if (!validEmail(email)) {
+        setError(signupError, "Enter a valid email address.");
+        return;
+      }
+      if (password.length < 6) {
+        setError(signupError, "Password must be at least 6 characters.");
+        return;
+      }
+      if (password !== confirm) {
+        setError(signupError, "Passwords do not match.");
+        return;
+      }
+
+      const button = $("signupForm").querySelector(".auth-submit");
+      button.disabled = true;
+      button.textContent = "CREATING…";
+      setError(signupError);
+
+      try {
+        const { data, error } = await supabaseClient.auth.signUp({
+          email,
+          password,
+          options: { data: { full_name: name } }
+        });
+
+        if (error) {
+          setError(signupError, error.message);
+          return;
+        }
+
+        if (data.session && data.user) {
+          currentUser = data.user;
+          updateAccountButtons();
+          closeAuth();
+          toast("Account created.");
+        } else {
+          setAuthMode("login");
+          $("loginEmail").value = email;
+          authSub.textContent = "Account created. Check your email to confirm, then log in.";
+          toast("Check your email to confirm your WINGS account.");
+        }
+      } catch (error) {
+        setError(signupError, error?.message || "Account creation failed.");
+      } finally {
+        button.disabled = false;
+        button.textContent = "CREATE ACCOUNT";
+      }
+    });
+
+    $("accountShopBtn").addEventListener("click", () => {
+      closeAuth();
+      $("collection").scrollIntoView({ behavior: "smooth" });
+    });
+
+    $("logoutBtn").addEventListener("click", async () => {
+      if (!supabaseClient) return;
+
+      const { error } = await supabaseClient.auth.signOut();
+      if (error) {
+        toast("Could not log out.");
+        return;
+      }
+
+      currentUser = null;
+      updateAccountButtons();
+      closeAuth();
+      toast("Logged out.");
+    });
+
+    function updateAccountButtons() {
+      const loggedIn = Boolean(currentUser);
+      accountBtn.textContent = loggedIn ? "ACCOUNT" : "LOGIN";
+      mobileAccountBtn.textContent = loggedIn ? "ACCOUNT" : "LOGIN";
+      accountBtn.setAttribute("aria-label", loggedIn ? "Open WINGS account" : "Log in");
+      mobileAccountBtn.setAttribute("aria-label", loggedIn ? "Open WINGS account" : "Log in");
+    }
+
+    function toast(message) {
+      let host = $("siteToast");
+      if (!host) {
+        host = document.createElement("div");
+        host.id = "siteToast";
+        host.style.cssText =
+          "position:fixed;left:50%;bottom:24px;transform:translateX(-50%);" +
+          "z-index:120;padding:12px 17px;background:#f5f0e8;color:#0a0a0a;" +
+          "font:800 10px/1 DM Sans,sans-serif;letter-spacing:.1em;text-transform:uppercase;" +
+          "box-shadow:0 14px 40px rgba(0,0,0,.3);transition:opacity .2s ease";
+        document.body.appendChild(host);
+      }
+      host.textContent = message;
+      host.style.opacity = "1";
+      clearTimeout(host._timer);
+      host._timer = setTimeout(() => host.style.opacity = "0", 2400);
+    }
+
+    async function bootstrapAuth() {
+      if (!window.supabase || typeof window.supabase.createClient !== "function") {
+        console.error("Supabase library failed to load.");
+        return;
+      }
+
+      supabaseClient = window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+      );
+
+      try {
+        const { data, error } = await supabaseClient.auth.getSession();
+        if (error) console.error("SESSION LOAD ERROR", error);
+
+        currentUser = data?.session?.user || null;
+        updateAccountButtons();
+
+        supabaseClient.auth.onAuthStateChange((_event, session) => {
+          currentUser = session?.user || null;
+          updateAccountButtons();
+        });
+      } catch (error) {
+        console.error("AUTH BOOTSTRAP ERROR", error);
+      }
+    }
+
+    updateAccountButtons();
+    bootstrapAuth();
+
+  </script>
+
+
+</body>
+</html>
